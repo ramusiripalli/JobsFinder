@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 .input {
-  @apply w-full px-4 py-2 border rounded mb-3 focus:outline-none focus:ring focus:ring-blue-300;
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg mb-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all;
 }
+
 .btn {
-  @apply bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700;
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition duration-200;
 }
+
+
+

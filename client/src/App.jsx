@@ -12,7 +12,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-        <ToastContainer
+        
+      </Routes>
+      <ToastContainer
     position="top-center"
     autoClose={3000}
     hideProgressBar={false}
@@ -22,8 +24,8 @@ function App() {
     draggable
     theme="colored"
   />
-      </Routes>
     </Router>
+    
   );
 }
 
