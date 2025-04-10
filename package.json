@@ -2,7 +2,6 @@
   "name": "jobportal",
   "version": "1.0.0",
   "description": "Learn. Share. Grow Together.  A Mern Stack Project on Building Skill Swap application",
-  "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon api/index.js",
@@ -12,9 +11,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
-    "mongoose": "^8.13.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.13.2",
     "nodemon": "^3.1.9"
   }
 }
