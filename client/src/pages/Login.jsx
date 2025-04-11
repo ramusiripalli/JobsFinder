@@ -49,7 +49,7 @@ const Login = () => {
               className="w-full px-4 py-3 bg-transparent border border-cyan-500/70 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition"
             />
             <span
-              className="absolute right-4 top-9 text-gray-400 cursor-pointer"
+              className="absolute right-4 top-9 text-gray-400 cursor-pointer text-2xl"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}

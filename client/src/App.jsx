@@ -4,7 +4,8 @@ import Register from "./pages/Register.jsx";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Landing from "./pages/Landing.jsx";
-// import Dashboard from "./pages/Dashboard"; // upcoming
+import Dashboard from "./pages/Dashboard.jsx";
+
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+        <Route path="/dashboard" element={<Dashboard />} />
         
       </Routes>
       <ToastContainer
