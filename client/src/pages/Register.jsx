@@ -53,7 +53,7 @@ const Register = () => {
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black flex justify-center items-center px-4">
       <Toaster position="top-center" />
 
-      <div className="max-w-md w-full bg-[#0f0f0f] rounded-2xl shadow-lg shadow-cyan-400/80 border border-cyan-600/60 p-8">
+      <div className="max-w-md w-full bg-[#0f0f1fdd] rounded-2xl shadow-lg shadow-cyan-400/80 border border-cyan-600/60 p-8">
         <h2 className="text-3xl font-bold text-white text-center mb-6">
           Create your <span className="text-cyan-400">UdyogaSetu</span> Account
         </h2>
@@ -108,10 +108,8 @@ const Register = () => {
           </div>
 
           <button
-            type="submit"
-            className="w-full py-3 bg-gradient-to-r from-cyan-600 to-pink-600 text-white font-bold rounded-xl shadow-md hover:shadow-cyan-500 transition duration-300"
-          >
-            Register
+            type="submit" className="w-full bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] text-white py-2 font-bold rounded-md hover:shadow-cyan-500 transition-all duration-300 shadow-md"> 
+             Register
           </button>
         </form>
 

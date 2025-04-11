@@ -20,7 +20,7 @@ const Login = () => {
     <div className="min-h-screen bg-gradient-to-br from-black via-[#0a0a23] to-black flex items-center justify-center px-4">
       <Toaster position="top-center" />
       <div className="absolute top-[40%] left-[-5%] w-[50px] h-[400px] bg-cyan-400 blur-3xl rounded-full animate-bounce" />
-      <div className="w-full max-w-md bg-[#0f0f1fdd] border border-[#00f0ff33] rounded-2xl p-8 shadow-xl backdrop-blur-md animate-fade-in-up">
+      <div className="w-full max-w-md bg-[#0f0f1fdd] border border-[#00f0ff33] rounded-2xl p-8 shadow-lg shadow-cyan-400/80 animate-fade-in-up">
         <h2 className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] mb-6">
           Login to UdyogaSetu
         </h2>
@@ -56,10 +56,7 @@ const Login = () => {
             </span>
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] text-white py-2 rounded-md font-semibold hover:opacity-90 transition-all duration-200 shadow-md"
-          >
+          <button type="submit" className="w-full bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] text-white py-2 rounded-md font-semibold hover:shadow-[#ff00c3] transition-all duration-200 shadow-md">
             Login
           </button>
         </form>
