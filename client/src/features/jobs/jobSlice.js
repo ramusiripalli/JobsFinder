@@ -1,44 +1,26 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import jobService from "./jobService";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import jobService from '../../services/jobService';
 
-const initialState = {
-  jobs: [],
-  isLoading: false,
-  isSuccess: false,
-  isError: false,
-  message: "",
-};
-
-export const postJob = createAsyncThunk("jobs/post", async (jobData, thunkAPI) => {
-  try {
-    return await jobService.postJob(jobData);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data.message);
-  }
-});
+export const postJob = createAsyncThunk('jobs/post', jobService.postJob);
 
 const jobSlice = createSlice({
-  name: "jobs",
-  initialState,
-  reducers: {
-    resetJob: (state) => initialState,
-  },
+  name: 'jobs',
+  initialState: { jobs: [], loading: false, error: null },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(postJob.pending, (state) => {
-        state.isLoading = true;
+        state.loading = true;
       })
       .addCase(postJob.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
+        state.loading = false;
+        state.jobs.push(action.payload);
       })
       .addCase(postJob.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
+        state.loading = false;
+        state.error = action.error.message;
       });
   },
 });
 
-export const { resetJob } = jobSlice.actions;
 export default jobSlice.reducer;

@@ -1,26 +1,22 @@
-const asyncHandler = require('express-async-handler');
 const Job = require('../models/job.model.js');
 
-const createJob = asyncHandler(async (req, res) => {
-  const { title, company, location, salary, jobType, description, skills } = req.body;
-
-  if (!title || !company || !location || !jobType || !skills || !description) {
-    res.status(400);
-    throw new Error('All required fields must be filled');
+const postJob = async (req, res) => {
+  try {
+    const { title, company, location, salary, description } = req.body;
+    const job = new Job({
+      title, company, location, salary, description,
+      recruiter: req.user._id
+    });
+    await job.save();
+    res.status(201).json(job);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
+};
 
-  const job = await Job.create({
-    user: req.user.id,
-    title,
-    company,
-    location,
-    salary,
-    jobType,
-    description,
-    skills,
-  });
+const getAllJobs = async (req, res) => {
+  const jobs = await Job.find().populate('recruiter', 'name email');
+  res.json(jobs);
+};
 
-  res.status(201).json(job);
-});
-
-module.exports = { createJob };
+module.exports = { postJob, getAllJobs };
