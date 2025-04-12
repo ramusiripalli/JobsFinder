@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const authRoutes = require("./routes/auth.routes.js");
+import jobRoutes from "./routes/job.routes.js";
 dotenv.config();
 const app = express();
 
@@ -13,7 +14,7 @@ mongoose.connect(process.env.MONGO)
   .catch(err => console.log(err));
 
 app.use("/api/auth", authRoutes);
-
+app.use("/api/jobs", jobRoutes);
 
 
 const PORT = process.env.PORT || 5000;
