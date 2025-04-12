@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Toaster, toast } from 'react-hot-toast';
 
 const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
     confirmPassword: '',
+    role: '',
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -20,9 +22,9 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, email, password, confirmPassword } = formData;
+    const { name, email, password, confirmPassword, role } = formData;
 
-    if (!name || !email || !password || !confirmPassword) {
+    if (!name || !email || !password || !confirmPassword || !role) {
       return toast.error('Please fill all fields!');
     }
 
@@ -40,6 +42,7 @@ const Register = () => {
       const data = await res.json();
       if (res.ok) {
         toast.success('Registered successfully!');
+        navigate('/login');
       } else {
         toast.error(data.message || 'Registration failed!');
       }
@@ -50,10 +53,24 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black flex justify-center items-center px-4">
-      <Toaster position="top-center" />
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black flex flex-col justify-center items-center px-4 relative">
+      <Toaster position="top-center" toastOptions={{
+    style: {
+      fontSize: '25px',
+      padding: '16px 24px',
+      minWidth: '300px',
+    },
+  }} />
 
-      <div className="max-w-md w-full bg-[#0f0f1fdd] rounded-2xl shadow-lg shadow-cyan-400/80 border border-cyan-600/60 p-8">
+      {/* Home Page Button - Outside Card */}
+      <button
+        onClick={() => navigate('/')}
+        className="absolute top-6 left-6 text-lg bg-cyan-400 text-white px-4 py-1 rounded-md hover:shadow-pink-400 transition duration-300 shadow-md"
+      >
+        ← Go to Home Page
+      </button>
+
+      <div className="max-w-md w-full bg-[#0f0f1fdd] rounded-2xl shadow-lg shadow-cyan-400/80 border border-cyan-600/60 p-8 mt-10">
         <h2 className="text-3xl font-bold text-white text-center mb-6">
           Create your <span className="text-cyan-400">UdyogaSetu</span> Account
         </h2>
@@ -75,6 +92,17 @@ const Register = () => {
             onChange={handleChange}
           />
 
+          {/* <select
+            name="role"
+            value={formData.role}
+            onChange={handleChange}
+            className="w-full px-4 py-3 bg-black border border-cyan-500/70 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition"
+          >
+            <option value="">Select Role</option>
+            <option value="recruiter">Recruiter</option>
+            <option value="jobseeker">Job Seeker</option>
+          </select> */}
+
           <div className="relative">
             <input
               type={showPassword ? 'text' : 'password'}
@@ -85,7 +113,7 @@ const Register = () => {
             />
             <span
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-3.5 text-white cursor-pointer"
+              className="absolute right-3 top-3.5 text-xl text-white cursor-pointer"
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
@@ -101,20 +129,22 @@ const Register = () => {
             />
             <span
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              className="absolute right-3 top-3.5 text-white cursor-pointer"
+              className="absolute right-3 top-3.5 text-xl text-white cursor-pointer"
             >
               {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
           </div>
 
           <button
-            type="submit" className="w-full bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] text-white py-2 font-bold rounded-md hover:shadow-cyan-500 transition-all duration-300 shadow-md"> 
-             Register
+            type="submit"
+            className="w-full bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] text-white py-2 font-bold rounded-md hover:shadow-cyan-500 transition-all duration-300 shadow-md"
+          >
+            Register
           </button>
         </form>
 
-        <p className="text-center text-gray-400 mt-5">
-          Already have an account?{' '}
+        <p className="text-center text-gray-200 mt-5">
+          Already have an account?{'   '}
           <Link to="/login" className="text-cyan-400 hover:underline">
             Login here
           </Link>

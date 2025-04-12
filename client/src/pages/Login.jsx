@@ -18,7 +18,13 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-[#0a0a23] to-black flex items-center justify-center px-4">
-      <Toaster position="top-center" />
+      <Toaster position="top-center"  toastOptions={{
+    style: {
+      fontSize: '25px',
+      padding: '16px 24px',
+      minWidth: '300px',
+    },
+  }}/>
       <div className="absolute top-[40%] left-[-5%] w-[50px] h-[400px] bg-cyan-400 blur-3xl rounded-full animate-bounce" />
       <div className="w-full max-w-md bg-[#0f0f1fdd] border border-[#00f0ff33] rounded-2xl p-8 shadow-lg shadow-cyan-400/80 animate-fade-in-up">
         <h2 className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] mb-6">
