@@ -18,9 +18,9 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ['candidate', 'recruiter'],
-      default: 'candidate',
-    },
+      enum: ['admin', 'user'],
+      default: 'user'
+    }
   },
   { timestamps: true }
 );
@@ -40,4 +40,3 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;
-132

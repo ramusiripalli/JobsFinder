@@ -8,24 +8,48 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Replace with your login logic
-    toast.success("Logged in successfully 🎉");
-    navigate("/dashboard");
+    setLoading(true);
+    
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        toast.error(data.msg || "Login failed");
+      } else {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        toast.success("Logged in successfully 🎉");
+        navigate("/dashboard");
+      }
+    } catch (err) {
+      toast.error("Something went wrong");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-[#0a0a23] to-black flex items-center justify-center px-4">
-      <Toaster position="top-center"  toastOptions={{
-    style: {
-      fontSize: '25px',
-      padding: '16px 24px',
-      minWidth: '300px',
-    },
-  }}/>
-      <div className="absolute top-[40%] left-[-5%] w-[50px] h-[400px] bg-cyan-400 blur-3xl rounded-full animate-bounce" />
+      <Toaster position="top-center" toastOptions={{
+        style: {
+          fontSize: '18px',
+          padding: '16px 24px',
+          minWidth: '300px',
+        },
+      }} />
+       <div className="absolute top-[-10%] left-[-5%] w-[200px] h-[200px] bg-cyan-900 blur-3xl rounded-full animate-pulse" />
       <div className="w-full max-w-md bg-[#0f0f1fdd] border border-[#00f0ff33] rounded-2xl p-8 shadow-lg shadow-cyan-400/80 animate-fade-in-up">
         <h2 className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] mb-6">
           Login to UdyogaSetu
@@ -62,8 +86,12 @@ const Login = () => {
             </span>
           </div>
 
-          <button type="submit" className="w-full bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] text-white py-2 rounded-md font-semibold hover:shadow-[#ff00c3] transition-all duration-200 shadow-md">
-            Login
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] text-white py-2 rounded-md font-semibold hover:shadow-[#ff00c3] transition-all duration-200 shadow-md"
+          >
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 

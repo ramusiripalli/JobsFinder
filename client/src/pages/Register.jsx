@@ -9,8 +9,7 @@ const Register = () => {
     name: '',
     email: '',
     password: '',
-    confirmPassword: '',
-    role: '',
+    confirmPassword: ''
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -22,9 +21,9 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, email, password, confirmPassword, role } = formData;
+    const { name, email, password, confirmPassword } = formData;
 
-    if (!name || !email || !password || !confirmPassword || !role) {
+    if (!name || !email || !password || !confirmPassword) {
       return toast.error('Please fill all fields!');
     }
 
@@ -36,7 +35,7 @@ const Register = () => {
       const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ name, email, password })
       });
 
       const data = await res.json();
@@ -56,9 +55,9 @@ const Register = () => {
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black flex flex-col justify-center items-center px-4 relative">
       <Toaster position="top-center" toastOptions={{
     style: {
-      fontSize: '25px',
+      fontSize: '20px',
       padding: '16px 24px',
-      minWidth: '300px',
+      minWidth: '450px',
     },
   }} />
 
