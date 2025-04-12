@@ -7,6 +7,7 @@ import Landing from "./pages/Landing.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import UserDashboard from "./pages/UserDashboard.jsx";
 import AdminDashboard from "./pages/AdminDashboard.jsx";
+import NotAuthorized from "./pages/NotAuthorized.jsx";
 
 
 
@@ -29,7 +30,7 @@ function App() {
             <UserDashboard />
           </ProtectedRoute> 
         } />
-          
+          <Route path="/not-authorized" element={<NotAuthorized />} />
       </Routes>
       <ToastContainer
     position="top-center"
