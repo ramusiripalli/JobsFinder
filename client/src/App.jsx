@@ -4,7 +4,9 @@ import Register from "./pages/Register.jsx";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Landing from "./pages/Landing.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import UserDashboard from "./pages/UserDashboard.jsx";
+import AdminDashboard from "./pages/AdminDashboard.jsx";
 
 
 
@@ -15,9 +17,19 @@ function App() {
       <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         
-        
+        <Route path="/admin/dashboard" element= {
+              <ProtectedRoute allowedRoles={["admin"]}>
+                <AdminDashboard />
+              </ProtectedRoute> 
+            } />
+
+        <Route path="/dashboard" element={
+          <ProtectedRoute allowedRoles={["user", "admin"]}>
+            <UserDashboard />
+          </ProtectedRoute> 
+        } />
+          
       </Routes>
       <ToastContainer
     position="top-center"

@@ -1,7 +1,7 @@
 import React from "react";
 import { FaHome, FaBriefcase, FaBell, FaUser } from "react-icons/fa";
 
-const Dashboard = () => {
+const UserDashboard = () => {
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-black via-[#0a0a23] to-black text-white">
       {/* Sidebar */}
@@ -96,4 +96,4 @@ const JobCard = ({ title, company, location }) => (
   </div>
 );
 
-export default Dashboard;
+export default UserDashboard;
