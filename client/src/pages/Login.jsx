@@ -15,7 +15,7 @@ const Login = () => {
     setLoading(true);
     
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -44,9 +44,9 @@ const Login = () => {
     <div className="min-h-screen bg-gradient-to-br from-black via-[#0a0a23] to-black flex items-center justify-center px-4">
       <Toaster position="top-center" toastOptions={{
         style: {
-          fontSize: '18px',
+          fontSize: '20px',
           padding: '16px 24px',
-          minWidth: '300px',
+          minWidth: '450px',
         },
       }} />
        <div className="absolute top-[-10%] left-[-5%] w-[200px] h-[200px] bg-cyan-900 blur-3xl rounded-full animate-pulse" />
