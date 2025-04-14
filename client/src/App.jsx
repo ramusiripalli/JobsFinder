@@ -18,8 +18,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/show-case" element={<ShowcaseSection />} />
+        <Route path="/register" element={<Register />} />    
         
         <Route path="/admin/dashboard" element= {
               <ProtectedRoute allowedRoles={["admin"]}>
