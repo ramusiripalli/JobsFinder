@@ -8,7 +8,6 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import UserDashboard from "./pages/UserDashboard.jsx";
 import AdminDashboard from "./pages/AdminDashboard.jsx";
 import NotAuthorized from "./pages/NotAuthorized.jsx";
-import ShowcaseSection from "./pages/ShowCaseSection.jsx";
 
 
 

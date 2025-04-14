@@ -4,14 +4,13 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const authRoutes = require("./routes/auth.routes.js");
 const jobRoutes = require("./routes/job.routes.js");
+const connectDB = require("./config/db.js");
 dotenv.config();
 const app = express();
 
 app.use(express.json());
 app.use(cors());
-mongoose.connect(process.env.MONGO)
-  .then(() => console.log("MongoDB connected"))
-  .catch(err => console.log(err));
+connectDB();
 
 app.use("/api/auth", authRoutes);
 app.use("/api/jobs", jobRoutes);
