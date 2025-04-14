@@ -1,13 +1,15 @@
-import express from "express";
-import {
+const express = require("express");
+const router = express.Router();
+
+const {
   createJob,
   getAllJobs,
   updateJob,
   deleteJob,
-} from "../controllers/job.controller.js";
-import { verifyToken, isAdmin } from "../middleware/auth.middleware.js";
+} = require("../controllers/job.controller.js");
 
-const router = express.Router();
+const { verifyToken, isAdmin } = require("../middleware/auth.middleware.js");
+
 
 // Only admin can create, update, delete jobs
 router.post("/create", verifyToken, isAdmin, createJob);
@@ -17,4 +19,4 @@ router.delete("/delete/:id", verifyToken, isAdmin, deleteJob);
 // All users can view jobs
 router.get("/", getAllJobs);
 
-export default router;
+module.exports = router;

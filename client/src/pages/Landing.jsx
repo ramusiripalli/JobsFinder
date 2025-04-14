@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+import ShowcaseSection from "./ShowCaseSection.jsx";
 
 const Landing = () => {
   return (
     <div className="min-h-screen bg-black text-white font-sans relative overflow-hidden">
       {/* Background Glow Effects */}
-      <div className="absolute top-[50%] left-[40%] w-[400px] h-[200px] bg-gradient-to-br from-pink-400 to-cyan-600 opacity-40 blur-3xl rounded-full animate-spin" />
+      <div className="absolute top-[38%] left-[40%] w-[400px] h-[220px] bg-gradient-to-br from-pink-400 to-cyan-400 opacity-40 blur-3xl rounded-full animate-spin" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[200px] h-[300px] bg-gradient-to-tr from-blue-600 to-cyan-400 opacity-40 blur-3xl rounded-full animate-pulse" />
 
       {/* Navbar */}
@@ -82,7 +83,7 @@ const Landing = () => {
           ].map((item, index) => (
             <div
               key={index}
-              className="bg-black border border-cyan-400 p-6 rounded-2xl shadow-xl hover:shadow-cyan-500/80 transition-all"
+              className="bg-[#0f172a] border border-cyan-400 p-6 rounded-2xl shadow-xl hover:shadow-cyan-500/80 transition-all"
             >
               <h4 className="text-xl font-semibold text-cyan-300 mb-2">{item.title}</h4>
               <p className="text-gray-300 text-sm">{item.desc}</p>
@@ -93,6 +94,8 @@ const Landing = () => {
 
       {/* Final CTA */}
       <section className="px-8 py-20 text-center bg-black">
+      <ShowcaseSection />
+      <h1 className="text-2xl">🔗🧩📶</h1>
         <h2 className="text-4xl font-bold mb-4 text-white">
           All Jobs. One Setu. <span className="text-cyan-400">UdyogaSetu</span>
         </h2>
@@ -106,6 +109,7 @@ const Landing = () => {
           Join Now
         </Link>
       </section>
+    
     </div>
   );
 };

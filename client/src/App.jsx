@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import UserDashboard from "./pages/UserDashboard.jsx";
 import AdminDashboard from "./pages/AdminDashboard.jsx";
 import NotAuthorized from "./pages/NotAuthorized.jsx";
+import ShowcaseSection from "./pages/ShowCaseSection.jsx";
 
 
 
@@ -18,6 +19,7 @@ function App() {
       <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/show-case" element={<ShowcaseSection />} />
         
         <Route path="/admin/dashboard" element= {
               <ProtectedRoute allowedRoles={["admin"]}>
