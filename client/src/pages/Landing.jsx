@@ -5,7 +5,7 @@ const Landing = () => {
   return (
     <div className="min-h-screen bg-black text-white font-sans relative overflow-hidden">
       {/* Background Glow Effects */}
-      <div className="absolute top-[38%] left-[40%] w-[400px] h-[220px] bg-gradient-to-br from-pink-400 to-cyan-400 opacity-40 blur-3xl rounded-full animate-spin" />
+      <div className="absolute top-[34%] left-[40%] w-[400px] h-[240px] bg-gradient-to-br from-pink-400 to-cyan-400 opacity-40 blur-3xl rounded-full animate-spin" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[200px] h-[300px] bg-gradient-to-tr from-blue-600 to-cyan-400 opacity-40 blur-3xl rounded-full animate-pulse" />
 
       {/* Navbar */}
