@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import ShowcaseSection from "./ShowCaseSection.jsx";
 
 const Landing = () => {
-  return (
+  return ( 
     <div className="min-h-screen bg-black text-white font-sans relative overflow-hidden">
       {/* Background Glow Effects */}
       <div className="absolute top-[34%] left-[40%] w-[400px] h-[240px] bg-gradient-to-br from-pink-400 to-cyan-400 opacity-40 blur-3xl rounded-full animate-spin" />

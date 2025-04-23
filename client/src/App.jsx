@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import UserDashboard from "./pages/UserDashboard.jsx";
 import AdminDashboard from "./pages/AdminDashboard.jsx";
 import NotAuthorized from "./pages/NotAuthorized.jsx";
+import AdminJobForm from "./pages/AdminJobForm.jsx";
 
 
 
@@ -24,6 +25,11 @@ function App() {
                 <AdminDashboard />
               </ProtectedRoute> 
             } />
+        <Route path="/admin-job-form" element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+             <AdminJobForm />
+            </ProtectedRoute>
+          } />
 
         <Route path="/dashboard" element={
           <ProtectedRoute allowedRoles={["user", "admin"]}>
@@ -32,16 +38,9 @@ function App() {
         } />
           <Route path="/not-authorized" element={<NotAuthorized />} />
       </Routes>
-      <ToastContainer
-    position="top-center"
-    autoClose={3000}
-    hideProgressBar={false}
-    newestOnTop
-    closeOnClick
-    pauseOnHover
-    draggable
-    theme="colored"
-  />
+      <ToastContainer position="top-center" autoClose={3000} hideProgressBar={false} newestOnTop
+         closeOnClick pauseOnHover draggable theme="colored"
+      />
     </Router>
     
   );

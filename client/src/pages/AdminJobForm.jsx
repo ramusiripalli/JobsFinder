@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const AdminJobForm = () => {
   const initialValues = {
@@ -30,7 +31,7 @@ const AdminJobForm = () => {
 
   const onSubmit = async (values, { resetForm }) => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/jobs`, {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/jobs/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,86 +54,113 @@ const AdminJobForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white px-6 py-10">
-      <h2 className="text-3xl font-bold text-center mb-8 text-cyan-400">
-        Post a New Job
-      </h2>
+    <div className="min-h-screen flex bg-black text-white">
+      {/* Sidebar */} 
+      <aside className="w-80 bg-[#0f0f1fdd] p-6 border-r border-cyan-500 hidden md:block">
+        <h2 className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] mb-10">UdyogaSetu Admin</h2>
+        <nav className="space-y-5">
+          <Link
+            to="/admin/dashboard"
+            className="block px-4 py-2 bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] text-white rounded-md font-semibold hover:shadow-[#ff00c3] transition-all duration-200 shadow-md"
+          >
+             Admin Dashboard
+          </Link>
+          <Link
+            to="/admin/post-job"
+            className="block px-4 py-2 rounded bg-cyan-800 hover:bg-cyan-700 transition"
+          >
+            Post a Job
+          </Link>
+        </nav>
+      </aside>
 
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
-      >
-        <Form className="max-w-3xl mx-auto space-y-6">
-          <div>
-            <label className="block mb-1">Job Title</label>
-            <Field name="title" className="w-full p-3 rounded bg-gray-900 border border-cyan-500" />
-            <ErrorMessage name="title" component="div" className="text-red-400 text-sm" />
-          </div>
+      {/* Main Form Section */}
+      <main className="flex-1 p-6 flex justify-center items-start bg-black">
+        <div className="w-full max-w-3xl border-2 border-cyan-500 rounded-lg p-8">
+          <h2 className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] py-5">
+            Post a New Job
+          </h2>
+ 
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}
+          >
+            <Form className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block mb-1">Job Title</label>
+                  <Field name="title" className="w-full p-3 rounded bg-gray-900 border border-cyan-500" />
+                  <ErrorMessage name="title" component="div" className="text-red-400 text-sm" />
+                </div>
+                <div>
+                  <label className="block mb-1">Company</label>
+                  <Field name="company" className="w-full p-3 rounded bg-gray-900 border border-cyan-500" />
+                  <ErrorMessage name="company" component="div" className="text-red-400 text-sm" />
+                </div>
 
-          <div>
-            <label className="block mb-1">Company</label>
-            <Field name="company" className="w-full p-3 rounded bg-gray-900 border border-cyan-500" />
-            <ErrorMessage name="company" component="div" className="text-red-400 text-sm" />
-          </div>
+                <div>
+                  <label className="block mb-1">Location</label>
+                  <Field name="location" className="w-full p-3 rounded bg-gray-900 border border-cyan-500" />
+                  <ErrorMessage name="location" component="div" className="text-red-400 text-sm" />
+                </div>
+                <div>
+                  <label className="block mb-1">Job Type</label>
+                  <Field as="select" name="type" className="w-full p-3 rounded bg-gray-900 border border-cyan-500">
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                    <option value="Internship">Internship</option>
+                  </Field>
+                  <ErrorMessage name="type" component="div" className="text-red-400 text-sm" />
+                </div>
 
-          <div>
-            <label className="block mb-1">Location</label>
-            <Field name="location" className="w-full p-3 rounded bg-gray-900 border border-cyan-500" />
-            <ErrorMessage name="location" component="div" className="text-red-400 text-sm" />
-          </div>
+                <div>
+                  <label className="block mb-1">Salary (optional)</label>
+                  <Field name="salary" className="w-full p-3 rounded bg-gray-900 border border-cyan-500" />
+                </div>
+                <div>
+                  <label className="block mb-1">Posted By (Platform)</label>
+                  <Field name="postedBy" placeholder="e.g. LinkedIn, Naukri" className="w-full p-3 rounded bg-gray-900 border border-cyan-500" />
+                  <ErrorMessage name="postedBy" component="div" className="text-red-400 text-sm" />
+                </div>
+              </div>
 
-          <div>
-            <label className="block mb-1">Job Type</label>
-            <Field as="select" name="type" className="w-full p-3 rounded bg-gray-900 border border-cyan-500">
-              <option value="Full-time">Full-time</option>
-              <option value="Part-time">Part-time</option>
-              <option value="Internship">Internship</option>
-            </Field>
-            <ErrorMessage name="type" component="div" className="text-red-400 text-sm" />
-          </div>
+              <div>
+                <label className="block mb-1">Description</label>
+                <Field as="textarea" name="description" rows="4" className="w-full p-3 rounded bg-gray-900 border border-cyan-500" />
+                <ErrorMessage name="description" component="div" className="text-red-400 text-sm" />
+              </div>
 
-          <div>
-            <label className="block mb-1">Salary (optional)</label>
-            <Field name="salary" className="w-full p-3 rounded bg-gray-900 border border-cyan-500" />
-          </div>
+              <div>
+                <label className="block mb-1">Job Link</label>
+                <Field name="jobLink" className="w-full p-3 rounded bg-gray-900 border border-cyan-500" />
+                <ErrorMessage name="jobLink" component="div" className="text-red-400 text-sm" />
+              </div>
 
-          <div>
-            <label className="block mb-1">Description</label>
-            <Field as="textarea" name="description" rows="4" className="w-full p-3 rounded bg-gray-900 border border-cyan-500" />
-            <ErrorMessage name="description" component="div" className="text-red-400 text-sm" />
-          </div>
+              <div>
+                <label className="block mb-1">Passouts</label>
+                <div className="grid grid-cols-4 gap-2">
+                  {[2019, 2020, 2021, 2022, 2023, 2024, 2025].map((year) => (
+                    <label key={year} className="flex items-center space-x-2">
+                      <Field type="checkbox" name="passouts" value={String(year)} />
+                      <span>{year}</span>
+                    </label>
+                  ))}
+                </div>
+                <ErrorMessage name="passouts" component="div" className="text-red-400 text-sm" />
+              </div>
 
-          <div>
-            <label className="block mb-1">Job Link</label>
-            <Field name="jobLink" className="w-full p-3 rounded bg-gray-900 border border-cyan-500" />
-            <ErrorMessage name="jobLink" component="div" className="text-red-400 text-sm" />
-          </div>
-
-          <div>
-            <label className="block mb-1">Passouts</label>
-            <div className="grid grid-cols-4 gap-2">
-              {[2019, 2020, 2021, 2022, 2023, 2024, 2025].map((year) => (
-                <label key={year} className="flex items-center space-x-2">
-                  <Field type="checkbox" name="passouts" value={String(year)} />
-                  <span>{year}</span>
-                </label>
-              ))}
-            </div>
-            <ErrorMessage name="passouts" component="div" className="text-red-400 text-sm" />
-          </div>
-
-          <div>
-            <label className="block mb-1">Posted By (Platform)</label>
-            <Field name="postedBy" placeholder="e.g. LinkedIn, Naukri" className="w-full p-3 rounded bg-gray-900 border border-cyan-500" />
-            <ErrorMessage name="postedBy" component="div" className="text-red-400 text-sm" />
-          </div>
-
-          <button type="submit" className="w-full py-3 bg-gradient-to-r from-cyan-500 to-pink-500 text-white rounded-md font-semibold">
-            Post Job
-          </button>
-        </Form>
-      </Formik>
+              <button
+                type="submit"
+                className="w-full py-3 bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] text-white rounded-md font-semibold hover:shadow-[#ff00c3] transition-all duration-200 shadow-md"
+              >
+                Post Job
+              </button>
+              
+            </Form>
+          </Formik>
+        </div>
+      </main>
     </div>
   );
 };
