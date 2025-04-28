@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ShowcaseSection from "./ShowCaseSection.jsx";
+import ShowcaseSection from "./ShowcaseSection.jsx";
 
 const Landing = () => {
   return ( 
