@@ -60,11 +60,12 @@ const Register = () => {
       minWidth: '450px',
     },
   }} />
+    
 
       {/* Home Page Button - Outside Card */}
       <button
         onClick={() => navigate('/')}
-        className="absolute top-6 left-6 text-lg bg-cyan-400 text-white px-4 py-1 rounded-md hover:shadow-pink-400 transition duration-300 shadow-md"
+        className="absolute top-6 left-6 text-lg bg-gradient-to-l from-[#00f0ff] to-[#ff00c3] text-white px-4 py-1 rounded-md hover:shadow-pink-400 transition duration-300 shadow-md"
       >
         ← Go to Home Page
       </button>
@@ -136,7 +137,7 @@ const Register = () => {
 
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] text-white py-2 font-bold rounded-md hover:shadow-cyan-500 transition-all duration-300 shadow-md"
+            className="w-full bg-gradient-to-l from-[#00f0ff] to-[#ff00c3] text-white py-2 font-bold rounded-md hover:shadow-pink-500 transition-all duration-300 shadow-md"
           >
             Register
           </button>

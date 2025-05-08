@@ -25,7 +25,7 @@ const AdminDashboard = () => {
   return (
     <div className="min-h-screen bg-black text-white flex">
       {/* Sidebar */}
-      <aside className="w-80 bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] p-6 space-y-10 shadow-2xl border-r border-cyan-400">
+      <aside className="w-80 p-6 space-y-10 shadow-2xl border-r border-white">
         <h1 className="text-3xl font-bold text-white tracking-wide">UdyogaSetu</h1>
 
         <nav className="flex flex-col gap-4">
@@ -33,7 +33,7 @@ const AdminDashboard = () => {
             <button
               key={idx}
               onClick={() => navigate(item.path)}
-              className="flex items-center gap-3 text-left px-4 py-2 rounded-lg hover:shadow-lg transition-all"
+              className="flex items-center gap-3 text-left px-4 py-2 rounded-lg hover:shadow-xl hover:text-white transition-all text-black bg-gradient-to-t from-[#00f0ff] to-[#ff00c3]"
             >
               {item.icon}
               <span className="text-xl text-white">{item.name}</span>
@@ -42,7 +42,7 @@ const AdminDashboard = () => {
         </nav>
 
         <button
-          className="flex items-center gap-2 text-black hover:text-pink-500 text-xl mt-12 ml-4"
+          className="flex items-center gap-2 text-white hover:text-cyan-400 text-xl mt-12 ml-4"
           onClick={() => navigate("/login")}
         >
           <LogOut size={35} /> Logout
@@ -53,7 +53,7 @@ const AdminDashboard = () => {
       <div className="flex-1 flex flex-col">
         {/* Top Navbar */}
         <header className="w-full px-8 py-4 border-b border-white backdrop-blur-lg flex justify-center items-center bg-[#0f0f1fdd] shadow-2xl border-r">
-          <h2 className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] mb-6">
+          <h2 className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#FF9933] via-white to-[#138808] mb-6">
             Admin Dashboard
           </h2>
         </header>
@@ -80,10 +80,10 @@ const AdminDashboard = () => {
             ].map((card, i) => (
               <div
                 key={i}
-                className="bg-gradient-to-r from-[#FF9933] via-white to-[#138808] backdrop-blur-lg p-6 rounded-2xl shadow-xl border border-gray-700"
+                className="bg-gradient-to-b from-[#FF9933] via-white to-[#138808] backdrop-blur-lg p-6 rounded-2xl shadow-xl border border-cyan-400"
               >
                 
-                <h4 className="text-xl text-cyan-300 font-semibold mb-2">{card.title}</h4>
+                <h4 className="text-xl text-black font-semibold mb-2">{card.title}</h4>
                 <p className="text-4xl font-bold text-white">{card.value}</p>
               </div>
             ))}

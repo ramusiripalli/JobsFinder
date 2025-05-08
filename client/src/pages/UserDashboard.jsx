@@ -1,7 +1,9 @@
 import React from "react";
 import { FaHome, FaBriefcase, FaBell, FaUser } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 
 const UserDashboard = () => {
+    const navigate = useNavigate();
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-black via-[#0a0a23] to-black text-white">
       {/* Sidebar */}
@@ -26,9 +28,9 @@ const UserDashboard = () => {
           <h2 className="text-2xl font-semibold">
             👋 Welcome Back, <span className="text-[#00f0ff]">Candidate</span>
           </h2>
-          <button className="bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] px-4 py-2 rounded-md text-white shadow-md hover:scale-105 transition">
+          <button onClick={() => navigate('/')} className="bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] px-4 py-2 rounded-md text-white shadow-md hover:scale-105 transition">
             Logout
-          </button>
+          </button> 
         </header>
 
         {/* Cards */}

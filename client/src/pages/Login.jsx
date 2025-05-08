@@ -66,7 +66,13 @@ const Login = () => {
           }
         }}
       />
-      <div className="absolute top-[-10%] left-[-5%] w-[200px] h-[200px] bg-cyan-900 blur-3xl rounded-full animate-pulse" />
+       <button
+        onClick={() => navigate('/')}
+        className="absolute top-6 left-6 text-lg bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] text-white px-4 py-1 rounded-md hover:shadow-pink-400 transition duration-300 shadow-md"
+      >
+        ← Go to Home Page
+      </button>
+      <div className="absolute top-[-10%] right-[1%] w-[200px] h-[200px] bg-cyan-900 blur-3xl rounded-full animate-pulse" />
       <div className="w-full max-w-md bg-[#0f0f1fdd] border border-[#00f0ff33] rounded-2xl p-8 shadow-lg shadow-cyan-400/80 animate-fade-in-up">
         <h2 className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-[#ff00c3] mb-6">
           Login to UdyogaSetu
